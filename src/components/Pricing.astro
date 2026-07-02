@@ -1,0 +1,33 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  subtitle: string;
+  items: { duration: string; price: string }[];
+  note?: string;
+  homeVisit?: string;
+  alt?: boolean;
+}
+
+const { id, title, subtitle, items, note, homeVisit, alt = false } = Astro.props;
+---
+
+<section id={id} class:list={['section', { 'section--alt': alt }]}>
+  <div class="container">
+    <h2 class="section__title">{title}</h2>
+    <p class="section__subtitle">{subtitle}</p>
+    <div class="pricing">
+      <ul class="pricing__list">
+        {items.map(item => (
+          <li class="pricing__row">
+            <span class="pricing__duration">{item.duration}</span>
+            <span class="pricing__dots" aria-hidden="true"></span>
+            <span class="pricing__price">{item.price}</span>
+          </li>
+        ))}
+      </ul>
+      {homeVisit && <p class="pricing__homevisit">{homeVisit}</p>}
+      {note && <p class="pricing__note">{note}</p>}
+    </div>
+  </div>
+</section>

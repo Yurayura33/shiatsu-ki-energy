@@ -1,0 +1,61 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  schema?: Record<string, unknown>;
+}
+
+const { title, description, schema } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const base = import.meta.env.BASE_URL;
+
+// Build the JSON-LD object, injecting context + canonical URL.
+const jsonLd = schema
+  ? { '@context': 'https://schema.org', ...schema, url: canonicalURL }
+  : null;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; form-action 'none'; base-uri 'self'; connect-src 'self';"
+    />
+    <meta name="description" content={description} />
+    <meta name="author" content="Joseph" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:image" content={new URL(`${base}og-image.jpg`, Astro.site)} />
+
+    <!-- Google Fonts (Noto Serif JP + Noto Sans JP) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+
+    <!-- Structured Data -->
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <slot />
+    <script src={`${base}nav.js`} defer></script>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

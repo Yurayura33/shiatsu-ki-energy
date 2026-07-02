@@ -1,0 +1,24 @@
+---
+interface Props {
+  brand: string;
+  brandHref?: string;
+  links: { href: string; label: string }[];
+}
+
+const { brand, brandHref = '/', links } = Astro.props;
+---
+
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href={brandHref} class="nav__logo">{brand}</a>
+    <input type="checkbox" id="nav-toggle" class="nav__toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav__toggle-label" aria-label="Toggle menu">
+      <span></span>
+    </label>
+    <ul class="nav__links">
+      {links.map(link => (
+        <li><a href={link.href} class="nav__link">{link.label}</a></li>
+      ))}
+    </ul>
+  </div>
+</nav>

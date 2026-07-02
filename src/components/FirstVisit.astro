@@ -1,0 +1,34 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  subtitle: string;
+  intro?: string;
+  items: { label: string; text: string }[];
+  pricing?: string;
+  note?: string;
+  alt?: boolean;
+}
+
+const { id, title, subtitle, intro, items, pricing, note, alt = false } = Astro.props;
+---
+
+<section id={id} class:list={['section', { 'section--alt': alt }]}>
+  <div class="container">
+    <h2 class="section__title">{title}</h2>
+    <p class="section__subtitle">{subtitle}</p>
+    <div class="first-visit__content">
+      {intro && <p class="first-visit__intro">{intro}</p>}
+      <dl class="first-visit__list">
+        {items.map(item => (
+          <div class="first-visit__item">
+            <dt class="first-visit__label">{item.label}</dt>
+            <dd class="first-visit__text">{item.text}</dd>
+          </div>
+        ))}
+      </dl>
+      {pricing && <p class="first-visit__pricing">{pricing}</p>}
+      {note && <p class="first-visit__note">{note}</p>}
+    </div>
+  </div>
+</section>
