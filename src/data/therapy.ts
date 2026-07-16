@@ -1,3 +1,5 @@
+import { site } from './site';
+
 const description =
   'Japanese Wellness Therapy in the Sutton & Carshalton area — acupressure and Qi energy treatment by Joseph, restoring the natural flow of qi to relieve tension and support wellbeing. Home visits available.';
 
@@ -15,11 +17,19 @@ export const therapy = {
     email: 'eikou.1988@icloud.com',
     priceRange: '££',
     areaServed: 'Sutton, Carshalton and surrounding areas',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Sutton',
+      addressRegion: 'Greater London',
+      addressCountry: 'GB',
+    },
     geo: {
       '@type': 'GeoCoordinates',
       latitude: 51.3726485,
       longitude: -0.1945654,
     },
+    // Links this business to its social profiles for Google's Knowledge Graph.
+    sameAs: [site.social.youtube, site.social.instagram, site.social.facebook],
   },
   // In-page section anchors for the header nav.
   nav: [
