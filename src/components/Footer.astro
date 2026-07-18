@@ -5,15 +5,9 @@ interface Props {
   copy?: string;
   backToTop: string;
   instagram?: string;
-  builtBy?: { label: string; url?: string };
 }
 
-const {
-  copy = site.copyright,
-  backToTop,
-  instagram = site.social.instagram,
-  builtBy = site.builtBy,
-} = Astro.props;
+const { copy = site.copyright, backToTop, instagram = site.social.instagram } = Astro.props;
 const currentYear = new Date().getFullYear();
 ---
 
@@ -55,24 +49,17 @@ const currentYear = new Date().getFullYear();
       </a>
     </div>
     <p class="footer__copy">&copy; {currentYear} {copy}</p>
-    {
-      builtBy?.label && (
-        <p class="footer__credit">
-          {builtBy.url ? (
-            <a
-              href={builtBy.url}
-              class="footer__credit-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {builtBy.label}
-            </a>
-          ) : (
-            builtBy.label
-          )}
-        </p>
-      )
-    }
+    <p class="footer__credit">
+      <a
+        class="hshk-credit"
+        href="https://www.hoshiko.tech/websites/?ref=japanese-wellness-therapy"
+        target="_blank"
+        rel="noopener"
+      >
+        <svg class="hshk-spark" width="13" height="13" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><defs><linearGradient id="hshk-g" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#22d3ee"/><stop offset=".5" stop-color="#818cf8"/><stop offset="1" stop-color="#c084fc"/></linearGradient></defs><path fill="url(#hshk-g)" d="M12 0c.5 6.5 5 11 12 12-7 1-11.5 5.5-12 12-.5-6.5-5-11-12-12 7-1 11.5-5.5 12-12z"/></svg>
+        <span>Built by <span class="hshk-name">Hoshiko Tech Ltd</span></span>
+      </a>
+    </p>
     <a href="#" class="footer__top-link">{backToTop}</a>
   </div>
 </footer>

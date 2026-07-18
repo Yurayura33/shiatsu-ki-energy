@@ -659,17 +659,55 @@ p {
 
 .footer__credit {
   margin-bottom: 0.75rem;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.45);
 }
 
-.footer__credit-link {
-  color: rgba(255, 255, 255, 0.45);
-  transition: color 0.2s ease;
+.hshk-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 500 13px/1.4 ui-sans-serif, system-ui, -apple-system, sans-serif;
+  color: inherit;
+  opacity: 0.75;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
-.footer__credit-link:hover {
-  color: var(--color-gold);
+.hshk-credit:hover {
+  opacity: 1;
+}
+
+.hshk-name {
+  background: linear-gradient(135deg, #22d3ee, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+.hshk-spark {
+  flex: none;
+  animation: hshk-tw 2.8s ease-in-out infinite;
+  transition: transform 0.5s ease;
+}
+
+.hshk-credit:hover .hshk-spark {
+  transform: rotate(90deg);
+}
+
+@keyframes hshk-tw {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hshk-spark {
+    animation: none;
+  }
 }
 
 .footer__top-link {
