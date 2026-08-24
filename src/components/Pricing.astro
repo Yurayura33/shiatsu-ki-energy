@@ -4,12 +4,13 @@ interface Props {
   title: string;
   subtitle: string;
   items: { duration: string; price: string }[];
+  firstVisit?: string;
   note?: string;
   homeVisit?: string;
   alt?: boolean;
 }
 
-const { id, title, subtitle, items, note, homeVisit, alt = false } = Astro.props;
+const { id, title, subtitle, items, firstVisit, note, homeVisit, alt = false } = Astro.props;
 ---
 
 <section id={id} class:list={['section', { 'section--alt': alt }]}>
@@ -26,6 +27,7 @@ const { id, title, subtitle, items, note, homeVisit, alt = false } = Astro.props
           </li>
         ))}
       </ul>
+      {firstVisit && <p class="pricing__offer">{firstVisit}</p>}
       {homeVisit && <p class="pricing__homevisit">{homeVisit}</p>}
       {note && <p class="pricing__note">{note}</p>}
     </div>

@@ -11,10 +11,9 @@ interface Props {
     email: string;
     emailHref: string;
     areaLabel: string;
-    area: string;
-    mapsLabel: string;
-    mapsUrl: string;
-    mapEmbedUrl?: string;
+    area: string[];
+    directionsLabel: string;
+    directions: string[];
   };
   alt?: boolean;
 }
@@ -53,28 +52,18 @@ const { contact, alt = false } = Astro.props;
           <circle cx="12" cy="10" r="3"/>
         </svg>
         <p class="contact__label">{contact.areaLabel}</p>
-        <p class="contact__value">{contact.area}</p>
-        <p class="contact__value">
-          <a href={contact.mapsUrl} target="_blank" rel="noopener noreferrer" class="contact__link-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            {contact.mapsLabel}
-          </a>
-        </p>
+        {contact.area.map((line) => <p class="contact__value">{line}</p>)}
       </div>
     </div>
-    {contact.mapEmbedUrl && (
-      <div class="contact__map">
-        <iframe
-          src={contact.mapEmbedUrl}
-          width="600"
-          height="450"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Japanese Wellness Therapy location"
-        ></iframe>
-      </div>
-    )}
+    <div class="contact__directions">
+      <svg class="contact__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h4"/>
+        <path d="m12 3 3 3-3 3"/>
+        <path d="M15 6H9a3 3 0 0 0-3 3v1"/>
+        <circle cx="17" cy="15" r="4"/>
+      </svg>
+      <p class="contact__label">{contact.directionsLabel}</p>
+      {contact.directions.map((line) => <p class="contact__value">{line}</p>)}
+    </div>
   </div>
 </section>

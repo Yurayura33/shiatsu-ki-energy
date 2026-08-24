@@ -19,6 +19,7 @@ export const therapy = {
     areaServed: 'Sutton, Carshalton and surrounding areas',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: 'Mulgrave Road',
       addressLocality: 'Sutton',
       addressRegion: 'Greater London',
       addressCountry: 'GB',
@@ -62,7 +63,7 @@ export const therapy = {
     items: [
       {
         label: 'Acupressure',
-        text: 'The body has twelve major energy pathways (meridians) along which acupressure points are located. By stimulating these points, we regulate the flow of energy and restore the body’s natural balance.',
+        text: 'The body has twelve major energy pathways (meridians) along which acupressure points are located. By stimulating these points, we regulate the flow of energy and restore the body’s natural balance. All acupressure is applied by hand.',
       },
       {
         label: 'Massage & Muscle Relaxation',
@@ -91,11 +92,12 @@ export const therapy = {
     title: 'Treatment Fees',
     subtitle: '料金', // TODO(jp): confirm Japanese with Joseph
     items: [
-      { duration: '60 min', price: '£70' },
+      { duration: '60 min', price: '£60' },
       { duration: '90 min', price: '£90' },
-      { duration: '120 min', price: '£120' },
+      { duration: '120 min', price: '£110' },
     ],
-    note: 'Sessions are available from 30 minutes. Each treatment is individually tailored to your needs.',
+    firstVisit: 'First visit — 30% off',
+    note: 'Sessions are available from 60 minutes. Each treatment is individually tailored to your needs.',
     homeVisit: 'Home visit treatment +£20',
   },
   contact: {
@@ -109,11 +111,12 @@ export const therapy = {
     email: 'eikou.1988@icloud.com',
     emailHref: 'mailto:eikou.1988@icloud.com',
     areaLabel: 'Area',
-    area: 'Sutton / Carshalton area — home visits available',
-    mapsLabel: 'View on Google Maps',
-    mapsUrl: 'https://www.google.com/maps/place/?q=place_id:ChIJmeGvFfKUYUMRZwMkdIPVHME',
-    // Keyless embed (no API key needed) centered on the place. www.google.com host keeps it within the CSP.
-    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9972!2d-0.1945654!3d51.3726485!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x436194f215afe199%3A0xc11cd58374240367!2sJapanese%20Wellness%20Therapy!5e0!3m2!1sen!2suk',
+    area: ['Sutton / Carshalton area', 'Home visits available'],
+    directionsLabel: 'Getting Here',
+    directions: [
+      'The treatment room is on Mulgrave Road, Sutton',
+      '(about a 5 minute walk from Sutton station)',
+    ],
   },
   footer: {
     backToTop: 'Back to top ↑',
