@@ -63,7 +63,9 @@ const { contact, alt = false } = Astro.props;
         <circle cx="17" cy="15" r="4"/>
       </svg>
       <p class="contact__label">{contact.directionsLabel}</p>
-      {contact.directions.map((line) => <p class="contact__value">{line}</p>)}
+      <div class="contact__directions-body">
+        {contact.directions.map((line) => <p class="contact__value">{line}</p>)}
+      </div>
     </div>
   </div>
 </section>

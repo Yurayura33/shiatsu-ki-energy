@@ -97,7 +97,7 @@ export const therapy = {
       { duration: '120 min', price: '£110' },
     ],
     firstVisit: 'First visit — 30% off',
-    note: 'Sessions are available from 60 minutes. Each treatment is individually tailored to your needs.',
+    note: 'Sessions are available from 30 minutes. Each treatment is individually tailored to your needs.',
     homeVisit: 'Home visit treatment +£20',
   },
   contact: {
@@ -114,8 +114,8 @@ export const therapy = {
     area: ['Sutton / Carshalton area', 'Home visits available'],
     directionsLabel: 'Getting Here',
     directions: [
-      'The treatment room is on Mulgrave Road, Sutton',
-      '(about a 5 minute walk from Sutton station)',
+      'The treatment room is on Mulgrave Road, Sutton, about 10 minutes walk from Sutton station.',
+      'The full address will be provided when your booking is confirmed.',
     ],
   },
   footer: {

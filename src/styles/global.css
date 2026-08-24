@@ -617,6 +617,14 @@ p {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
+.contact__directions-body {
+  text-align: left;
+}
+
+.contact__directions-body p:last-child {
+  margin-bottom: 0;
+}
+
 /* ===== Footer ===== */
 .footer {
   background-color: var(--color-ink);
@@ -752,6 +760,10 @@ p {
     max-width: 900px;
   }
 
+  .contact__directions {
+    padding: 1.75rem 3rem;
+  }
+
   .image-band {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -800,5 +812,9 @@ p {
 
   .instructor__grid {
     gap: 4rem;
+  }
+
+  .contact__directions {
+    padding: 2rem 5rem;
   }
 }
