@@ -1,4 +1,8 @@
 ---
+// Fonts are self-hosted (bundled from @fontsource) so no visitor data goes to Google Fonts.
+import '@fontsource-variable/noto-sans-jp';
+import '@fontsource-variable/noto-serif-jp';
+
 interface Props {
   title: string;
   description: string;
@@ -23,7 +27,7 @@ const jsonLd = schema
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; form-action 'none'; base-uri 'self'; connect-src 'self';"
+      content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; form-action 'none'; base-uri 'self'; connect-src 'self';"
     />
     <meta name="description" content={description} />
     <meta name="author" content="Joseph" />
@@ -44,14 +48,6 @@ const jsonLd = schema
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-
-    <!-- Google Fonts (Noto Serif JP + Noto Sans JP) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
 
     <title>{title}</title>
 
