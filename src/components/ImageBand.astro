@@ -3,14 +3,14 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
-  images: ImageMetadata[];
+  images: { src: ImageMetadata; alt: string }[];
 }
 
 const { images } = Astro.props;
 ---
 
-<div class="image-band" aria-hidden="true">
+<div class="image-band">
   {images.map(img => (
-    <Image src={img} alt="" class="image-band__img" widths={[300, 450, 600]} sizes="(min-width: 768px) 25vw, 50vw" loading="lazy" />
+    <Image src={img.src} alt={img.alt} class="image-band__img" widths={[300, 450, 600]} sizes="(min-width: 768px) 25vw, 50vw" loading="lazy" />
   ))}
 </div>

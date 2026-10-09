@@ -73,7 +73,14 @@ import gal10 from '../assets/image10.jpeg';
       note={therapy.pricing.note}
       homeVisit={therapy.pricing.homeVisit}
     />
-    <ImageBand images={[gal7, gal8, gal9, gal10]} />
+    <ImageBand
+      images={[
+        { src: gal7, alt: 'Treatment mat and pillow laid out in the therapy room, with foot reflexology and muscle charts against the wall' },
+        { src: gal8, alt: "Joseph treating a client's head and face as they lie on the treatment mat" },
+        { src: gal9, alt: 'Essential oils, an aroma diffuser and a small tabletop water fountain' },
+        { src: gal10, alt: 'Hot stone heater beside a set of smooth black massage stones' },
+      ]}
+    />
     <ContactTherapy contact={therapy.contact} alt />
   </main>
   <Footer backToTop={therapy.footer.backToTop} />
