@@ -1,0 +1,17 @@
+---
+// Shown and wired up by public/consent.js. Stays hidden without JavaScript,
+// which is fine: without JavaScript no Google tags load either.
+import { site } from '../data/site';
+---
+
+<section id="cookie-banner" class="cookie-banner" aria-label="Cookie consent" hidden>
+  <p class="cookie-banner__text">
+    With your permission, we use Google Analytics to see how visitors use this site and Google Ads
+    to measure our adverts. Both set cookies and share data with Google. Nothing is set unless you
+    accept. See our <a href={site.privacy.href}>privacy policy</a>.
+  </p>
+  <div class="cookie-banner__actions">
+    <button type="button" class="cookie-banner__button" data-consent="denied">Reject cookies</button>
+    <button type="button" class="cookie-banner__button" data-consent="granted">Accept cookies</button>
+  </div>
+</section>

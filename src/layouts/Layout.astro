@@ -2,6 +2,7 @@
 // Fonts are self-hosted (bundled from @fontsource) so no visitor data goes to Google Fonts.
 import '@fontsource-variable/noto-sans-jp';
 import '@fontsource-variable/noto-serif-jp';
+import CookieBanner from '../components/CookieBanner.astro';
 
 interface Props {
   title: string;
@@ -24,26 +25,19 @@ const jsonLd = schema
 <html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-RRDXJKRBTZ"
-    ></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){window.dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-RRDXJKRBTZ');
-    </script>
-```
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Google domains are for Google Analytics 4 + Google Ads, per
+      https://developers.google.com/tag-platform/security/guides/csp
+      (google.co.uk is listed separately because CSP can't wildcard the TLD), plus two Google Ads
+      hosts the guide misses: googleads.g.doubleclick.net (script) and ad.doubleclick.net (img).
+      Inline scripts stay blocked, so Google's code lives in public/consent.js.
+    -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'none'; script-src 'self' https://www.googletagmanager.com https://www.google.com https://www.googleadservices.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.google.com https://www.googleadservices.com https://pagead2.googlesyndication.com; form-action 'none'; base-uri 'self'; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://stats.g.doubleclick.net https://www.google.com https://www.googleadservices.com;"
+      content="default-src 'none'; script-src 'self' https://www.googletagmanager.com https://www.googleadservices.com https://www.google.com https://googleads.g.doubleclick.net; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com https://*.google.co.uk https://*.g.doubleclick.net https://ad.doubleclick.net https://www.googleadservices.com https://pagead2.googlesyndication.com; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com https://*.google.co.uk https://*.g.doubleclick.net https://ad.doubleclick.net https://www.googleadservices.com https://pagead2.googlesyndication.com; frame-src https://www.googletagmanager.com; form-action 'none'; base-uri 'self';"
     />
-      content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; form-action 'none'; base-uri 'self'; connect-src 'self';"
-    />
+    <script src={`${base}consent.js`} defer></script>
     <meta name="description" content={description} />
     <meta name="author" content="Joseph" />
     <link rel="canonical" href={canonicalURL} />
@@ -64,14 +58,14 @@ const jsonLd = schema
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <script src={`${base}google-tag.js`} defer>
-　　　</script><title>{title}</title>
+    <title>{title}</title>
 
     <!-- Structured Data -->
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
+    <CookieBanner />
     <slot />
     <script src={`${base}nav.js`} defer></script>
   </body>
